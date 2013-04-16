@@ -2,7 +2,7 @@ package scalaz.contrib
 package nscala_time
 
 import scalaz._
-import org.joda.time._
+import org.joda.time.Months
 
 trait MonthsInstances{
   implicit val monthsInstance = new Monoid[Months] with Order[Months] {

@@ -2,7 +2,7 @@ package scalaz.contrib
 package nscala_time
 
 import scalaz._
-import org.joda.time._
+import org.joda.time.Years
 
 trait YearsInstances{
   implicit val yearsInstance = new Monoid[Years] with Order[Years] {

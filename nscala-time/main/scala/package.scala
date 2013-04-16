@@ -15,4 +15,6 @@ package object nscala_time
   with WeeksInstances
   with MinutesInstances
   with IntervalInstances
-
+  with YearMonthInstances
+  with InstantInstances
+  with MonthDayInstances

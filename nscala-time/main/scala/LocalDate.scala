@@ -2,10 +2,8 @@ package scalaz.contrib
 package nscala_time
 
 import scalaz._
-import org.joda.time._
+import org.joda.time.LocalDate
 
 trait LocalDateInstances{
-  implicit val localDateInstance = new Order[LocalDate]{
-    def order(x: LocalDate, y: LocalDate) = Ordering.fromInt(x compareTo y)
-  }
+  implicit val localDateInstance = OrderFromInt[LocalDate](_ compareTo _)
 }

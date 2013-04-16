@@ -23,37 +23,46 @@ trait NScalaTimeArbitrary{
     smallIntArb map { Period.millis(_) }
 
   implicit val DateTimeArbitrary: Arbitrary[DateTime] =
-    arb[Int] map { new DateTime(_) }
+    arb[Long] map { new DateTime(_) }
 
   implicit val LocalDateArbitrary: Arbitrary[LocalDate] =
-    arb[Int] map { new LocalDate(_) }
+    arb[Long] map { new LocalDate(_) }
 
   implicit val LocalTimeArbitrary: Arbitrary[LocalTime] =
-    arb[Int] map { new LocalTime(_) }
+    arb[Long] map { new LocalTime(_) }
 
   implicit val LocalDateTimeArbitrary: Arbitrary[LocalDateTime] =
-    arb[Int] map { new LocalDateTime(_) }
+    arb[Long] map { new LocalDateTime(_) }
 
   implicit val DaysArbitrary: Arbitrary[Days] =
-    smallIntArb map { Days.days }
+    smallIntArb map Days.days
 
   implicit val HoursArbitrary: Arbitrary[Hours] =
-    smallIntArb map { Hours.hours }
+    smallIntArb map Hours.hours
 
   implicit val MonthsArbitrary: Arbitrary[Months] =
-    smallIntArb map { Months.months }
+    smallIntArb map Months.months
 
   implicit val SecondsArbitrary: Arbitrary[Seconds] =
-    smallIntArb map { Seconds.seconds  }
+    smallIntArb map Seconds.seconds
 
   implicit val YearsArbitrary: Arbitrary[Years] =
-    smallIntArb map { Years.years }
+    smallIntArb map Years.years
 
   implicit val WeeksArbitrary: Arbitrary[Weeks] =
-    smallIntArb map { Weeks.weeks }
+    smallIntArb map Weeks.weeks
 
   implicit val MinutesArbitrary: Arbitrary[Minutes] =
-    smallIntArb map { Minutes.minutes }
+    smallIntArb map Minutes.minutes
+
+  implicit val InstantArbitrary: Arbitrary[Instant] =
+    arb[Long] map { new Instant(_) }
+
+  implicit val YearMonthArbitrary: Arbitrary[YearMonth] =
+    arb[Long] map { new YearMonth(_) }
+
+  implicit val MonthDayArbitrary: Arbitrary[MonthDay] =
+    arb[Long] map { new MonthDay(_) }
 
   implicit val IntervalArbitrary: Arbitrary[Interval] =
     Apply[Arbitrary].apply2(arb[Int], arb[Int])((a, b) =>

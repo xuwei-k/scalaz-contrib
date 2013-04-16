@@ -2,7 +2,7 @@ package scalaz.contrib
 package nscala_time
 
 import scalaz._
-import org.joda.time._
+import org.joda.time.Hours
 
 trait HoursInstances{
   implicit val hoursInstance = new Monoid[Hours] with Order[Hours] {
