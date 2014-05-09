@@ -54,11 +54,6 @@ object ScalazContribBuild extends Build {
 
     resolvers += Resolver.sonatypeRepo("releases"),
 
-    // https://github.com/sbt/sbt/issues/603
-    conflictWarning ~= { cw =>
-      cw.copy(filter = (id: ModuleID) => id.organization != "org.scala-lang", group = (id: ModuleID) => id.organization + ":" + id.name)
-    },
-
     sourceDirectory <<= baseDirectory(identity),
 
     publishTo <<= (version).apply { v =>
@@ -157,6 +152,18 @@ object ScalazContribBuild extends Build {
       name := "scalaz-lift",
       libraryDependencies ++= Seq(
         "net.liftweb" %% "lift-common" % "2.5.1",
+        scalazSpecs2,
+        scalazScalacheck
+      )
+    )
+  )
+
+  lazy val jsr310 = Project(
+    id = "jsr310",
+    base = file("jsr310"),
+    settings = standardSettings ++ Seq(
+      name := "scalaz-jsr310",
+      libraryDependencies ++= Seq(
         scalazSpecs2,
         scalazScalacheck
       )
